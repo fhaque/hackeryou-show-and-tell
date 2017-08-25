@@ -11,10 +11,22 @@
 </head>
 <body>
      <a-scene physics="debug: true; gravity: -9.8;" vr-mode-ui="enabled: false">
+
+        <a-assets>
+                <a-asset-item id="duck" src="glTF-Sample-Models-master/1.0/Duck/glTF-Binary/Duck.glb"></a-asset-item>
+        </a-assets>
+    
+        <a-entity id="physDuck" 
+                position="0 4 -4" 
+                dynamic-body="shape: box; mass: 2" 
+                gltf-model="#duck"></a-entity>
+
+
+<!-- 
         <a-box id="box"
                 color="#9932cc"
                 position="0 4 -4" 
-                dynamic-body="shape: box; mass: 2"></a-box>
+                dynamic-body="shape: box; mass: 2"></a-box> -->
                 
          <a-plane position="0 -1.1 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
          
@@ -36,7 +48,7 @@
 
     document.addEventListener('click', function() {
         console.log("click"); 
-        var el = sceneEl.querySelector('#box');
+        var el = sceneEl.querySelector('#physDuck');
         el.body.applyImpulse(
         /* impulse */        new CANNON.Vec3(2, 0, 0),
         /* world position */ new CANNON.Vec3().copy(el.getAttribute('position'))
