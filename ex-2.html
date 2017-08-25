@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ex-2</title>
+    <!-- https://github.com/donmccurdy/aframe-physics-system -->
+    <script src="lib/aframe.min.js"></script>
+    <script src="lib/aframe-physics-system.min.js"></script>
+</head>
+<body>
+
+<a-scene physics="gravity: -9.8;">
+    <a-box id="box" 
+    rotation="50 45 0"
+    position="0 2.5 -4" 
+    color="#4CC3D9" 
+    dynamic-body="shape: box; mass: 2"></a-box>
+
+    <a-plane position="0 -1.1 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
+    
+    <a-sky color="#ECECEC"></a-sky>
+</a-scene>
+    
+</body>
+</html>

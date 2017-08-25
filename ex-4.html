@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="lib/aframe.min.js"></script>
+    <script src="lib/aframe-physics-system.min.js"></script>
+   <!--https://aframe.io/examples/showcase/shopping/ -->
+</head>
+<body>
+     <a-scene physics="debug: true; gravity: -9.8;" vr-mode-ui="enabled: false">
+        <a-box id="box"
+                color="#9932cc"
+                position="0 4 -4" 
+                dynamic-body="shape: box; mass: 2"></a-box>
+                
+         <a-plane position="0 -1.1 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
+         
+        <!-- <a-box id="plane"
+                position="0 -0.5 -4"
+                color="#7BC8A4"
+                dynamic-body="shape: box; mass: 2"></a-box> -->
+
+        <a-sphere  radius="1.25"
+                position="0 2 -4"
+                color="#EF2D5E" 
+                dynamic-body="mass: 10"></a-sphere>
+
+        <a-sky color="#ECECEC"></a-sky>
+    </a-scene> 
+
+<script>
+    var sceneEl = document.querySelector('a-scene');
+
+    document.addEventListener('click', function() {
+        console.log("click"); 
+        var el = sceneEl.querySelector('#box');
+        el.body.applyImpulse(
+        /* impulse */        new CANNON.Vec3(2, 0, 0),
+        /* world position */ new CANNON.Vec3().copy(el.getAttribute('position'))
+        );
+    });
+
+    // var el = sceneEl.querySelector('#box');
+    // var plane = sceneEl.querySelector('#plane');
+    // var hinge =  new CANNON.HingeConstraint(el.body, plane.body, {pivotA: new CANNON.Vec3(0,-0.5,0.5),
+    //                                                                 axisA: new CANNON.Vec3(1,0,0),
+    //                                                                 pivotB: new CANNON.Vec3(0, 0.5, 0.5),
+    //                                                                 axisB: new CANNON.Vec3(1,0,0) });
+    // console.log(el.body);
+    // console.log(sceneEl.systems.physics.addConstraint(hinge));
+
+</script>
+</body>
+
+</html> 
